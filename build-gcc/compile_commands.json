@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/jayde/projects/ArcaneUntitled/build-gcc",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -Wall -Wextra -Wpedantic -o CMakeFiles\\ArcaneUntitled.dir\\src\\Main.cpp.obj -c C:\\Users\\jayde\\projects\\ArcaneUntitled\\src\\Main.cpp",
+  "file": "C:/Users/jayde/projects/ArcaneUntitled/src/Main.cpp",
+  "output": "CMakeFiles/ArcaneUntitled.dir/src/Main.cpp.obj"
+}
+]

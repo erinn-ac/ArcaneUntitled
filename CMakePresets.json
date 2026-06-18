@@ -1,0 +1,43 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 16
+  },
+
+  "configurePresets": [
+    {
+      "name": "gcc-debug",
+      "displayName": "GCC Debug",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build-gcc",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "msvc-debug",
+      "displayName": "MSVC Debug",
+      "generator": "MinGW Makefiles",
+      "binaryDir": "${sourceDir}/build-msvc",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+
+  "buildPresets": [
+    {
+      "name": "gcc-build",
+      "configurePreset": "gcc-debug"
+    },
+    {
+      "name": "msvc-build",
+      "configurePreset": "msvc-debug"
+    }
+  ]
+}
