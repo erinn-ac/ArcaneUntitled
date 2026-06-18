@@ -20,7 +20,7 @@
     {
       "name": "msvc-debug",
       "displayName": "MSVC Debug",
-      "generator": "MinGW Makefiles",
+      "generator": "Visual Studio 17 2022",
       "binaryDir": "${sourceDir}/build-msvc",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "cl",

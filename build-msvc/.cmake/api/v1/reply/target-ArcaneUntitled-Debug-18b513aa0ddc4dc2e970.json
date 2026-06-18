@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "bin/ArcaneUntitled.exe"
+			"path" : "bin/Debug/ArcaneUntitled.exe"
 		},
 		{
-			"path" : "bin/ArcaneUntitled.pdb"
+			"path" : "bin/Debug/ArcaneUntitled.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -81,6 +81,12 @@
 			[
 				0
 			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "ArcaneUntitled::@6890427a1f51a3e7e1df",
