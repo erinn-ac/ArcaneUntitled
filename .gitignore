@@ -56,3 +56,9 @@ install_manifest.txt
 *.pch
 *.idb
 *.ilk
+
+# ============================
+#   CMake files
+# ============================
+build-gcc/
+build-msvc/
