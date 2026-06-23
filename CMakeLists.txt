@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.20)
 project(ArcaneUntitled
     VERSION 1.0
     DESCRIPTION "ArcaneUntitled C++ Project"
-    LANGUAGES CXX
+    LANGUAGES C CXX
 )
 
 # ---- Options ----
@@ -13,11 +13,13 @@ option(ARCANE_ENABLE_LTO "Enable link-time optimization" OFF)
 
 # ---- Sources ----
 if (MSVC)
-    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # for msvc hashtag for gcc
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 endif()
+
 set(SOURCES
-    src/Main.cpp
+    src/main.cpp
     src/config.h
+    src/glad.c
 )
 
 
@@ -32,10 +34,10 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 # ==== Include Directories ====
 target_include_directories(${PROJECT_NAME} PRIVATE dependencies)
-
 # ==== libraries ====
 if (MSVC)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARY} OpenGL::GL)
+    target_link_options(${PROJECT_NAME} PRIVATE "/NODEFAULTLIB:MSVCRT")
 else()
     target_link_libraries(${PROJECT_NAME} PRIVATE glfw OpenGL::GL)
 endif()
