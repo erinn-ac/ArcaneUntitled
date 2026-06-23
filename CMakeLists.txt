@@ -59,7 +59,7 @@ if (ARCANE_ENABLE_WARNINGS)
     if (MSVC)
         target_compile_options(${PROJECT_NAME} PRIVATE /W4 /permissive-)
     else()
-        target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
+        target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
     endif()
 endif()
 
