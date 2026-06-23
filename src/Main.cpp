@@ -6,7 +6,6 @@ int main() {
   std::string line;
 
   file.open(std::string(PROJECT_ROOT_DIR) + "/src/shaders/testFile.txt");
-  std::cout << file.is_open() << std::endl;
   while (std::getline(file, line)) {      
     std::cout << line << std::endl;
   }

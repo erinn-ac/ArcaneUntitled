@@ -6,7 +6,7 @@ project(ArcaneUntitled
     DESCRIPTION "ArcaneUntitled C++ Project"
     LANGUAGES C CXX
 )
-
+include(FetchContent)
 # ---- Options ----
 option(ARCANE_ENABLE_WARNINGS "Enable compiler warnings" ON)
 option(ARCANE_ENABLE_LTO "Enable link-time optimization" OFF)
@@ -25,7 +25,15 @@ set(SOURCES
 
 # ==== packages ====
 find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
+
+FetchContent_Declare(
+    glfw
+    GIT_REPOSITORY "https://github.com/glfw/glfw"
+    GIT_TAG        3.4  # You can replace this with a specific version tag or commit hash
+    GIT_SHALLOW    ON   # Downloads only the specified commit, saving bandwidth
+)
+FetchContent_MakeAvailable(glfw)
+
 # ---- Executable ----
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -34,13 +42,17 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
 # ==== Include Directories ====
 target_include_directories(${PROJECT_NAME} PRIVATE dependencies)
+target_compile_definitions(${PROJECT_NAME} PRIVATE 
+    PROJECT_ROOT_DIR="${CMAKE_CURRENT_SOURCE_DIR}/"
+)
+
 # ==== libraries ====
-if (MSVC)
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARY} OpenGL::GL)
-    target_link_options(${PROJECT_NAME} PRIVATE "/NODEFAULTLIB:MSVCRT")
-else()
-    target_link_libraries(${PROJECT_NAME} PRIVATE glfw OpenGL::GL)
-endif()
+#if (MSVC)
+#    target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARY} OpenGL::GL)
+#    target_link_options(${PROJECT_NAME} PRIVATE "/NODEFAULTLIB:MSVCRT")
+#else()
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw OpenGL::GL)
+#endif()
 
 # ---- Warnings ----
 if (ARCANE_ENABLE_WARNINGS)
